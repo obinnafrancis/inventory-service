@@ -126,4 +126,13 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>jenkins</id>
+            <build>
+                <finalName>inventory-${BUILD_VERSION}.${BUILD_NUMBER}</finalName>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
