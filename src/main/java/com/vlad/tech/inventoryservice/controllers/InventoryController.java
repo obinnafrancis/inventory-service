@@ -21,12 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/inventory")
 public class InventoryController {
     @Autowired
     private InventoryService inventoryService;
 
+    @CrossOrigin
     @PostMapping
     @Secured("ROLE_CREATE_INVENTORY")
     @ResponseStatus(HttpStatus.CREATED)
@@ -39,6 +41,7 @@ public class InventoryController {
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         };
     }
+
 
     @GetMapping("/{id}")
     @Secured("ROLE_GET_INVENTORY")

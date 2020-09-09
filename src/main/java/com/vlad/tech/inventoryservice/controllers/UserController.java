@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.concurrent.Callable;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @PostMapping("/authenticate")
     @ResponseStatus(HttpStatus.OK)
     public Callable<ResponseEntity<BaseResponse>> authenticateUser (@RequestBody @Valid LoginRequest loginRequest, Errors errors){
@@ -35,6 +37,7 @@ public class UserController {
         };
     }
 
+    @CrossOrigin
     @GetMapping("/me")
     @Secured("ROLE_GET_SESSION")
     @ResponseStatus(HttpStatus.OK)
@@ -44,6 +47,7 @@ public class UserController {
         };
     }
 
+    @CrossOrigin
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
     public Callable<ResponseEntity<BaseResponse>> create (@RequestBody @Valid RegisterUserRequest registerUserRequest, Errors errors){
@@ -56,6 +60,7 @@ public class UserController {
         };
     }
 
+    @CrossOrigin
     @GetMapping
     @Secured("ROLE_GET_USER")
     @ResponseStatus(HttpStatus.OK)
@@ -65,6 +70,7 @@ public class UserController {
         };
     }
 
+    @CrossOrigin
     @GetMapping("/hello")
     @Secured("ROLE_UPDATE_ROLE")
     @ResponseStatus(HttpStatus.OK)
@@ -72,6 +78,7 @@ public class UserController {
         return "HttpStatus.OK";
     }
 
+    @CrossOrigin
     @PutMapping
     @Secured("ROLE_UPDATE_USER")
     @ResponseStatus(HttpStatus.OK)
@@ -84,6 +91,7 @@ public class UserController {
         };
     }
 
+    @CrossOrigin
     @DeleteMapping
     @Secured("ROLE_DELETE_USER")
     @ResponseStatus(HttpStatus.OK)
